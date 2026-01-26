@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
-import StudentInterface from './pages/student/StudentInterface';
-import MascotPersonaStudio from './pages/teacher/MascotPersonaStudio';
-import AIStoryArchitect from './pages/teacher/AIStoryArchitect';
-import TeacherAnalytics from './pages/teacher/TeacherAnalytics';
-import SchoolSubscriptions from './pages/admin/SchoolSubscriptions';
-import AITokenUsage from './pages/admin/AITokenUsage';
+import UserDashboard from './pages/user/UserDashboard';
+import MascotPersonaStudio from './pages/user/MascotPersonaStudio';
+import EngagementAnalytics from './pages/user/EngagementAnalytics';
+import StorytellingMode from './pages/user/StorytellingMode';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import UserManagement from './pages/admin/UserManagement';
+import AITokenMonitoring from './pages/admin/AITokenMonitoring';
 import MascotLibrary from './pages/admin/MascotLibrary';
+import BusinessIntelligence from './pages/admin/BusinessIntelligence';
 import './index.css';
 
 function App() {
@@ -16,20 +18,21 @@ function App() {
         {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
 
-        {/* Student Routes */}
-        <Route path="/student" element={<StudentInterface />} />
+        {/* User Dashboard Routes */}
+        <Route path="/dashboard" element={<UserDashboard />} />
+        <Route path="/dashboard/persona" element={<MascotPersonaStudio />} />
+        <Route path="/dashboard/analytics" element={<EngagementAnalytics />} />
 
-        {/* Teacher Routes */}
-        <Route path="/teacher" element={<MascotPersonaStudio />} />
-        <Route path="/teacher/persona" element={<MascotPersonaStudio />} />
-        <Route path="/teacher/stories" element={<AIStoryArchitect />} />
-        <Route path="/teacher/analytics" element={<TeacherAnalytics />} />
+        {/* Immersive Storytelling Mode */}
+        <Route path="/story" element={<StorytellingMode />} />
+        <Route path="/story/:storyId" element={<StorytellingMode />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={<SchoolSubscriptions />} />
-        <Route path="/admin/subscriptions" element={<SchoolSubscriptions />} />
-        <Route path="/admin/tokens" element={<AITokenUsage />} />
+        {/* Admin System Routes */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/users" element={<UserManagement />} />
+        <Route path="/admin/tokens" element={<AITokenMonitoring />} />
         <Route path="/admin/library" element={<MascotLibrary />} />
+        <Route path="/admin/bi" element={<BusinessIntelligence />} />
       </Routes>
     </Router>
   );
