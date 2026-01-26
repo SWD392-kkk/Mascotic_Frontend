@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+
+  /* Student UI Components */
+  .game-button {
+    @apply relative px-8 py-4 text-xl font-game font-bold text-white rounded-3xl shadow-2xl transform transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer select-none;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  }
+
+  .game-button::before {
+    content: '';
+    @apply absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+  }
+
+  .game-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .game-card {
+    @apply relative bg-white rounded-3xl shadow-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+    background: linear-gradient(135deg, #ffffff 0%, #fef3f4 100%);
+  }
+
+  .mascot-viewport {
+    @apply relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  }
+
+  .voice-button {
+    @apply fixed bottom-8 right-8 w-20 h-20 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transform transition-all duration-300 hover:scale-110 active:scale-95 z-50;
+    background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+  }
+
+  .voice-button.active {
+    @apply animate-pulse-slow;
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+    }
+
+    50% {
+      box-shadow: 0 0 0 20px rgba(249, 115, 22, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+    }
+  }
+
+  .subtitle-overlay {
+    @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white text-center;
+  }
+
+  /* Teacher/Admin Dashboard Components */
+  .dashboard-card {
+    @apply bg-dashboard-card border border-dashboard-border rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .dashboard-card:hover {
+    @apply border-accent-purple/50;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);
+  }
+
+  .stat-card {
+    @apply dashboard-card relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 right-0 w-32 h-32 opacity-10;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 70%);
+  }
+
+  .form-input {
+    @apply w-full bg-dashboard-bg border border-dashboard-border rounded-lg px-4 py-3 text-dashboard-text placeholder-dashboard-muted focus:outline-none focus:ring-2 focus:ring-accent-purple focus:border-transparent transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-dashboard-text mb-2;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-accent-purple to-accent-pink text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-dashboard-card border border-dashboard-border text-dashboard-text font-semibold rounded-lg hover:bg-dashboard-bg hover:border-accent-purple transition-all duration-200;
+  }
+
+  .sidebar {
+    @apply fixed left-0 top-0 h-full w-64 bg-dashboard-bg border-r border-dashboard-border flex flex-col z-40;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-dashboard-muted hover:text-dashboard-text hover:bg-dashboard-card transition-all duration-200 cursor-pointer;
+  }
+
+  .sidebar-item.active {
+    @apply text-accent-purple bg-dashboard-card border-l-4 border-accent-purple;
+  }
+
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply bg-dashboard-card text-dashboard-text font-semibold text-left px-6 py-4 border-b border-dashboard-border;
+  }
+
+  .data-table td {
+    @apply px-6 py-4 border-b border-dashboard-border text-dashboard-text;
+  }
+
+  .data-table tr:hover {
+    @apply bg-dashboard-card/50;
+  }
+
+  /* Timeline Component */
+  .timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-dashboard-border;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute left-0 top-0 w-4 h-4 bg-accent-purple rounded-full transform -translate-x-[9px];
+  }
+
+  .timeline-item:hover::before {
+    @apply scale-150 shadow-lg;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+  }
+
+  /* Animations */
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dashboard-bg;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dashboard-border rounded-full hover:bg-dashboard-muted;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-purple to-accent-pink;
+  }
+
+  .bg-gradient-game {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  }
+
+  .bg-gradient-dashboard {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+}
