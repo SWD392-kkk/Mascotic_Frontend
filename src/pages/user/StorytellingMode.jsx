@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MascotCanvas from '../../components/MascotCanvas';
 
 export default function StorytellingMode() {
     const navigate = useNavigate();
@@ -832,9 +833,9 @@ export default function StorytellingMode() {
                 {/* 3D Model Area */}
                 <div style={styles.modelArea}>
                     <div style={styles.modelContainer}>
-                        {/* Mascot Avatar */}
-                        <div style={styles.modelCircle}>
-                            <span style={styles.modelEmoji}>{mascot.avatar}</span>
+                        {/* Mascot Avatar - Replaced with 3D Model */}
+                        <div style={{ width: '100%', height: '300px', margin: '0 auto 5px', position: 'relative' }}>
+                            <MascotCanvas isSpeaking={isSpeaking} />
                         </div>
 
                         {/* Idle State - Welcome message */}
